@@ -53,9 +53,8 @@ prediction = loaded_model.predict(features)[0]
 low_limit = 0.9 * prediction
 high_limit = 1.1 * prediction
 
-st.subheader(f"La valuación de la propiedad está entre el rango de:")
 st.markdown(
-    f"<h2 style='text-align: center; font-family: Arial, sans-serif;'>${low_limit:,.2f} <span style='color: black;'>y</span> ${high_limit:,.2f}</h2>",
+    f"<h2 style='text-align: center; font-family: Arial, sans-serif;'>La valuación de la propiedad está entre el rango de: ${low_limit:,.2f} <span style='color: black;'>y</span> ${high_limit:,.2f}</h2>",
     unsafe_allow_html=True
 )
 #%%
