@@ -4,3 +4,4 @@ joblib==1.1.0
 streamlit==0.89.0
 numpy==1.21.2
 geopy==2.2.0
+xgboost==1.4.2
