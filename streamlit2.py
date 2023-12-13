@@ -50,6 +50,9 @@ features = scaler.transform(features)
 prediction = loaded_model.predict(features)[0]
 
 # Display prediction
-st.subheader(f"Valuación ${prediction:,.2f}")
+low_limit = 0.9 * prediction
+high_limit = 1.1 * prediction
+
+st.subheader(f"La valuación de la propiedad está entre el rango de ${low_limit:,.2f} y {high_limit:,.2f}")
 
 #%%
