@@ -33,7 +33,7 @@ else:
 # Ploteo la ubicación ingresada
 data = [{'LATITUDE': Latitud, 'LONGITUDE': Longitud}]
 df = pd.DataFrame(data)
-st.map(data=df,latitude="LATITUDE", longitude="LONGITUDE", zoom=15)
+st.map(data=df,latitude="LATITUDE", longitude="LONGITUDE", zoom=15, size=10)
 
 # Ingreso los otros datos
 PropiedadSuperficieTotal = st.number_input("Metros cuadrados", min_value=0, max_value=500, value=50)
