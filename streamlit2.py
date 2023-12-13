@@ -53,6 +53,7 @@ prediction = loaded_model.predict(features)[0]
 low_limit = 0.9 * prediction
 high_limit = 1.1 * prediction
 
-st.subheader(f"La valuación de la propiedad está entre el rango de ${low_limit:,.2f} y  ${high_limit:,.2f}", divider='rainbow')
+st.subheader(f"La valuación de la propiedad está entre el rango de:")
+st.subheader(f"${low_limit:,.2f} y  ${high_limit:,.2f}", divider='rainbow')
 
 #%%
