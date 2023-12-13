@@ -8,10 +8,10 @@ import pickle
 from geopy.geocoders import Nominatim
 
 # Cargo el scaler
-scaler = load(r'G:\Mercado Inmobiliario\standard_scaler_fit.pkl')
+scaler = load(r'models/standard_scaler_fit.pkl')
 
 # Cargo el modelo predictivo
-with open(r"G:\Mercado Inmobiliario\xgboost_best_hedonic_model.pkl", 'rb') as file:
+with open(r"models/xgboost_best_hedonic_model.pkl", 'rb') as file:
     loaded_model = pickle.load(file)
 
 # Titulo
