@@ -54,6 +54,8 @@ low_limit = 0.9 * prediction
 high_limit = 1.1 * prediction
 
 st.subheader(f"La valuación de la propiedad está entre el rango de:")
-st.subheader(f"${low_limit:,.2f} y  ${high_limit:,.2f}", divider='rainbow')
-
+st.markdown(
+    f"<h2 style='text-align: center; font-family: Arial, sans-serif;'>${low_limit:,.2f} <span style='color: red;'>y</span> ${high_limit:,.2f}</h2>",
+    unsafe_allow_html=True
+)
 #%%
