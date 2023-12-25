@@ -60,8 +60,8 @@ if st.sidebar.button("Calcular Valuación"):
 
             # Display prediction with margin of error (10%)
             margin_of_error = 0.1 * prediction
-            low_limit = max(0, prediction - margin_of_error)
-            high_limit = prediction + margin_of_error
+            low_limit = round(max(0, prediction - margin_of_error))
+            high_limit = round(prediction + margin_of_error)
 
             low_limit_str = "{:,.2f}".format(low_limit)
             high_limit_str = "{:,.2f}".format(high_limit)
