@@ -67,7 +67,7 @@ if st.sidebar.button("Calcular Valuación"):
             high_limit_str = "{:,.2f}".format(high_limit)
 
             success_message = f"""
-                <div style="background-color: #ffffff; color: #77cf19; border: 1px solid #D6E9C6; padding: 15px; border-radius: 4px;">
+                <div style="background-color: #baffc0; color: #000000; border: 1px solid #D6E9C6; padding: 15px; border-radius: 4px;">
                     <strong>Rango Estimado:</strong> ${low_limit_str} - ${high_limit_str}
                 </div>
             """
