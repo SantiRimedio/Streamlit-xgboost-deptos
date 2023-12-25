@@ -42,7 +42,7 @@ st.sidebar.header("Detalles de la Propiedad")
 
 PropiedadSuperficieTotal = st.sidebar.number_input("Superficie Total (m²)", min_value=0, max_value=500, value=50)
 Antiguedad = st.sidebar.number_input("Antiguedad", min_value=0, max_value=100, value=0)
-CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes (Dormitorios + 1)", min_value=1, max_value=10, value=2)
+CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes", min_value=1, max_value=10, value=2)
 
 # Prediction Section
 st.sidebar.header("Resultados de la Valuación")
