@@ -64,7 +64,7 @@ if st.sidebar.button("Calcular Valuación"):
             high_limit = prediction + margin_of_error
 
             # Display prediction with styling
-            st.success(f"Valor Estimado: ${low_limit:} - ${high_limit:}")
+            st.success(f"Valor Estimado: ${low_limit:,.0f} - ${high_limit:,.0f}")
 
         except Exception as e:
             st.error(f"Error durante la predicción: {e}")
