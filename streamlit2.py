@@ -20,15 +20,18 @@ st.title("Valuación de Departamentos")
 # Tomo la ubicación
 location_text = st.text_input("Dirección de la propiedad", "Buenos Aires, Argentina")
 
-
-# Georeferencio la ubicación
-geolocator = Nominatim(user_agent="property_valuation_app")
-location_info = geolocator.geocode(location_text)
-if location_info:
-    Latitud = location_info.latitude
-    Longitud = location_info.longitude
-else:
-    Latitud, Longitud = 0.0, 0.0
+try:
+    # Georeferencio la ubicación
+    geolocator = Nominatim(user_agent="property_valuation_app")
+    location_info = geolocator.geocode(location_text)
+    if location_info:
+        Latitud = location_info.latitude
+        Longitud = location_info.longitude
+    else:
+        Latitud, Longitud = 0.0, 0.0
+except:
+    st.error(f"Error: {location_text}. La ubicación es incorrecta.")
+        
 
 # Ploteo la ubicación ingresada
 data = [{'LATITUDE': Latitud, 'LONGITUDE': Longitud}]
