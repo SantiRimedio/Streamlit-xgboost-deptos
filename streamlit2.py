@@ -63,7 +63,7 @@ if st.sidebar.button("Calcular Valuación"):
             low_limit = max(0, prediction - margin_of_error)
             high_limit = prediction + margin_of_error
 
-             low_limit_str = "{:,.2f}".format(low_limit).replace(",", ".")
+            low_limit_str = "{:,.2f}".format(low_limit).replace(",", ".")
             high_limit_str = "{:,.2f}".format(high_limit).replace(",", ".")
 
             # Display prediction with styling
