@@ -68,7 +68,7 @@ if st.sidebar.button("Calcular Valuación"):
 
             success_message = f"""
                 <div style="background-color: #DFF2BF; color: #4F8A10; border: 1px solid #D6E9C6; padding: 10px; border-radius: 4px;">
-                    <strong>Valor Estimado:</strong> ${low_limit} - ${high_limit}
+                    <strong>Rango Estimado:</strong> ${low_limit_str} - ${high_limit_str}
                 </div>
             """
             st.markdown(success_message, unsafe_allow_html=True)
