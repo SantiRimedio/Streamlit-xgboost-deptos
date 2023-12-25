@@ -1,13 +1,28 @@
+import streamlit as st
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from joblib import load
-from sklearn.model_selection import train_test_split
-import streamlit as st
 import numpy as np
 import pickle
 from geopy.geocoders import Nominatim
 import time
 
+# Check if the app is running on a mobile device
+is_mobile = st.get_option("browser.gatherUsageStats") is False
+
+# Set page config based on the device type
+if is_mobile:
+    st.set_page_config(
+        page_title="Valuación de Departamentos - Mobile",
+        page_icon=":house:",
+        layout="centered",
+    )
+else:
+    st.set_page_config(
+        page_title="Valuación de Departamentos - Web",
+        page_icon=":house:",
+        layout="wide",
+    )
 
 # Cargo el scaler
 scaler = load(r'models/standard_scaler_fit.pkl')
@@ -19,11 +34,8 @@ with open(r"models/xgboost_best_hedonic_model.pkl", 'rb') as file:
 # Titulo
 st.title("Valuación de Departamentos")
 
-# Input Controls Section
-st.sidebar.header("Parámetros de la Propiedad")
-
 # Tomo la ubicación
-location_text = st.sidebar.text_input("Dirección de la propiedad", "Buenos Aires, Argentina")
+location_text = st.text_input("Dirección de la propiedad", "Buenos Aires, Argentina")
 
 try:
     # Georeferencio la ubicación
@@ -38,16 +50,20 @@ except:
     st.error(f"Error: {location_text}. La ubicación es incorrecta.")
 
 # Property Details Section
-st.sidebar.header("Detalles de la Propiedad")
-
-PropiedadSuperficieTotal = st.sidebar.number_input("Superficie Total (m²)", min_value=0, max_value=500, value=50)
-Antiguedad = st.sidebar.number_input("Antiguedad", min_value=0, max_value=100, value=0)
-CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes", min_value=1, max_value=10, value=2)
+if not is_mobile:
+    st.sidebar.header("Detalles de la Propiedad")
+    PropiedadSuperficieTotal = st.sidebar.number_input("Superficie Total (m²)", min_value=0, max_value=500, value=50)
+    Antiguedad = st.sidebar.number_input("Antiguedad", min_value=0, max_value=100, value=0)
+    CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes", min_value=1, max_value=10, value=2)
+else:
+    PropiedadSuperficieTotal = st.number_input("Superficie Total (m²)", min_value=0, max_value=500, value=50)
+    Antiguedad = st.number_input("Antiguedad", min_value=0, max_value=100, value=0)
+    CantidadDormitorios = st.slider("Cantidad de Ambientes", min_value=1, max_value=10, value=2)
 
 # Prediction Section
-st.sidebar.header("Resultados de la Valuación")
+st.header("Resultados de la Valuación")
 
-if st.sidebar.button("Calcular Valuación",type="primary"):
+if st.button("Calcular Valuación"):
     with st.spinner("Realizando la predicción..."):
         # Predicción
         features = np.array([[Latitud, Longitud, PropiedadSuperficieTotal, CantidadDormitorios, Antiguedad, 2023]])
