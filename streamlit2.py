@@ -94,3 +94,13 @@ if st.button("Calcular Valuación"):
         except Exception as e:
             st.error(f"Error durante la predicción: {e}")
             prediction = 0.0  # or any default value
+
+
+st.markdown(
+    """
+    ---
+    ## Acerca del Desarrollador
+    Este programa fue desarrollado por Santiago Nuñez Rimedio.
+    
+    """
+)
