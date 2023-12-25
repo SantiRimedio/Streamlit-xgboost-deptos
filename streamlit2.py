@@ -66,8 +66,12 @@ if st.sidebar.button("Calcular Valuación"):
             low_limit_str = "{:,.2f}".format(low_limit)
             high_limit_str = "{:,.2f}".format(high_limit)
 
-            # Display prediction with styling
-            st.success(f"Valor Estimado: ${low_limit_str} - ${high_limit_str}")
+            success_message = f"""
+                <div style="background-color: #DFF2BF; color: #4F8A10; border: 1px solid #D6E9C6; padding: 10px; border-radius: 4px;">
+                    <strong>Valor Estimado:</strong> ${low_limit} - ${high_limit}
+                </div>
+            """
+            st.markdown(success_message, unsafe_allow_html=True)
 
         except Exception as e:
             st.error(f"Error durante la predicción: {e}")
