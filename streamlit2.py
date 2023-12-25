@@ -33,6 +33,22 @@ except:
     st.error(f"Error: {location_text}. La ubicación es incorrecta.")
 
 
+st.markdown(
+    """
+    <style>
+        .centered {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
+
 # Map Display Section
 st.header("Ubicación de la Propiedad")
 data = [{'LATITUDE': Latitud, 'LONGITUDE': Longitud}]
