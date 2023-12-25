@@ -32,6 +32,13 @@ try:
 except:
     st.error(f"Error: {location_text}. La ubicación es incorrecta.")
 
+
+# Map Display Section
+st.header("Ubicación de la Propiedad")
+data = [{'LATITUDE': Latitud, 'LONGITUDE': Longitud}]
+df = pd.DataFrame(data)
+st.map(data=df, latitude="LATITUDE", longitude="LONGITUDE", zoom=15, size=10)
+
 # Property Details Section
 st.header("Detalles de la Propiedad")
 
@@ -71,9 +78,3 @@ if st.button("Calcular Valuación"):
         except Exception as e:
             st.error(f"Error durante la predicción: {e}")
             prediction = 0.0  # or any default value
-
-# Map Display Section
-st.header("Ubicación de la Propiedad")
-data = [{'LATITUDE': Latitud, 'LONGITUDE': Longitud}]
-df = pd.DataFrame(data)
-st.map(data=df, latitude="LATITUDE", longitude="LONGITUDE", zoom=15, size=10)
