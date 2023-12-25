@@ -47,7 +47,6 @@ CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes (Dormitorios + 1)
 # Prediction Section
 st.sidebar.header("Resultados de la Valuación")
 
-# Prediction Button
 if st.sidebar.button("Calcular Valuación"):
     with st.spinner("Realizando la predicción..."):
         # Predicción
@@ -55,11 +54,17 @@ if st.sidebar.button("Calcular Valuación"):
 
         try:
             features = scaler.transform(features)
+            # Simulating a longer loading time (5 seconds delay)
             time.sleep(5)
             prediction = loaded_model.predict(features)[0]
 
+            # Display prediction with margin of error (10%)
+            margin_of_error = 0.1 * prediction
+            low_limit = max(0, prediction - margin_of_error)
+            high_limit = prediction + margin_of_error
+
             # Display prediction with styling
-            st.success(f"Valor Estimado: ${prediction:,.2f}")
+            st.success(f"Valor Estimado: ${low_limit:,.2f} - ${high_limit:,.2f}")
 
         except Exception as e:
             st.error(f"Error durante la predicción: {e}")
