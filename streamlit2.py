@@ -47,7 +47,7 @@ CantidadDormitorios = st.sidebar.slider("Cantidad de Ambientes (Dormitorios + 1)
 # Prediction Section
 st.sidebar.header("Resultados de la Valuación")
 
-if st.sidebar.button("Calcular Valuación"):
+if st.sidebar.button("Calcular Valuación",type="primary"):
     with st.spinner("Realizando la predicción..."):
         # Predicción
         features = np.array([[Latitud, Longitud, PropiedadSuperficieTotal, CantidadDormitorios, Antiguedad, 2023]])
@@ -68,7 +68,7 @@ if st.sidebar.button("Calcular Valuación"):
 
             success_message = f"""
                 <div style="background-color: #baffc0; color: #000000; border: 1px solid #D6E9C6; padding: 15px; border-radius: 4px;">
-                    <strong>Rango Estimado:</strong> ${low_limit_str} - ${high_limit_str}
+                    <strong>Valor Estimado:</strong> ${low_limit_str} - ${high_limit_str}
                 </div>
             """
             st.markdown(success_message, unsafe_allow_html=True)
