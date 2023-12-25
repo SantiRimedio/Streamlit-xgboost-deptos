@@ -6,6 +6,8 @@ import streamlit as st
 import numpy as np
 import pickle
 from geopy.geocoders import Nominatim
+import time
+
 
 # Cargo el scaler
 scaler = load(r'models/standard_scaler_fit.pkl')
@@ -53,6 +55,7 @@ if st.sidebar.button("Calcular Valuación"):
 
         try:
             features = scaler.transform(features)
+            time.sleep(5)
             prediction = loaded_model.predict(features)[0]
 
             # Display prediction with styling
